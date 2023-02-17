@@ -1,17 +1,36 @@
 let arr = [];
 let arr1 = [];
-let n = 0;
-let m = 0;
-let k = 0;
+let choose = 0
 
-alert(enter())
-alert(conclusion())
+do{
+    choose = Number(prompt('Что вы хотите сделать?\n\t1 - Добавить учеников\n\t' +
+        '2 - Вывести учеников\n\t3 - Дополнить уже имеющихся учеников\n\t' +
+        '4 - Найти ученика по определенному критерию\nЧтобы закончить, введите 0'))
+    switch (choose){
+        case 1:
+            enter()
+            break
+        case 2:
+            conclusion()
+            break
+        case 3:
+            addition()
+            break
+        case 4:
+            search()
+            break
+    }
+}while(choose !== 0)
 
-
+//
+// alert(conclusion())
+//
+// alert(conclusion())
+// alert(search())
 
 //ввод массива объектов
 function enter(){
-    n = prompt("Введите количество учеников", 2)
+    let n = prompt("Введите количество учеников", 2)
     for (let i = 0; i < n; i++){
         arr[i] = {
             surname: prompt('Введите фамилию ученика','Худобин'),
@@ -37,11 +56,12 @@ function enter(){
             class: prompt('Введите номер класса','9'),*/
         };
     }
-    return alert('Заполнение ученика прошло успешно');
+    return 'Заполнение учеников прошло успешно'
 }
 
 //вывод массива объектов
 function conclusion(){
+    arr1 = []
     for (let i in arr){
         if (i === '0'){
             arr1.push(`Ученик №${i}:\n`)
@@ -52,12 +72,12 @@ function conclusion(){
         }
     }
     console.log(arr1)
-    return arr1.join('');
+    return alert(arr1.join(''));
 }
 
 //функция дополнения
 function addition(){
-    m = prompt('Введите кол-во учеников, которых хотите добавить', 1);
+    let m = prompt('Введите кол-во учеников, которых хотите добавить', 1);
     let arr2 = [];
     for (let i = 0; i < m; i++){
         arr2 [i] = {
@@ -83,39 +103,26 @@ function addition(){
             school: prompt('Введите номер школы','53'),
             class: prompt('Введите номер класса','9'),*/
         };
-        n++;
     }
     arr.push.apply(arr, arr2);
-    return arr;
-    // return 'Данные успешно записаны';
+    return 'Данные успешно записаны';
 }
 
-
-/*вывод массива объектов
-function conclusion(){
-    alert(n);
-    alert(m);   
-    for (let i = 0; i < (n + m); i++){
-        arr1[i] = (i+1+'. ') + Object.values(arr[i]) + '\n';
-    };
-    return arr1;
-};*/
-
-
-
-/*let arr = [];
-
-arr[0] = {
-    name: 'dima',
-    id: 1,
-    surname: 'khudobin',
-};
-
-arr[1] = {
-    name: 'Sonia',
-    id: 2,
-    surname: 'Robertus',
+//поиск и вывод объекта по значению
+function search(){
+    let arr2 = []
+    let k = prompt('Введите значение, по которому хотите найти ученика:', 'Дмитрий')
+    for (let i in arr){
+        for (let key in arr[i]){
+            if (arr[i][key] === k){
+                if (i === '0'){
+                    arr2.push(`Ученик №${i}:\n`)
+                }else{arr2.push(`\nУченик №${i}:\n`)}
+                for (let key in arr[i]){
+                    arr2.push(key + ': ' + arr[i][key] + ', ')
+                }
+            }
+        }
+    }
+    return alert(arr2.join(''))
 }
-
-alert ( arr[0].id );
-*/
