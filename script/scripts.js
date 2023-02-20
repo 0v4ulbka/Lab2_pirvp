@@ -1,7 +1,5 @@
 let arr = [];
-let arr1 = [];
 let choose = 0
-
 do{
     choose = Number(prompt('Что вы хотите сделать?\n\t1 - Добавить учеников\n\t' +
         '2 - Вывести учеников\n\t3 - Дополнить уже имеющихся учеников\n\t' +
@@ -21,13 +19,6 @@ do{
             break
     }
 }while(choose !== 0)
-
-//
-// alert(conclusion())
-//
-// alert(conclusion())
-// alert(search())
-
 //ввод массива объектов
 function enter(){
     let n = prompt("Введите количество учеников", 2)
@@ -61,7 +52,7 @@ function enter(){
 
 //вывод массива объектов
 function conclusion(){
-    arr1 = []
+    let arr1 = []
     for (let i in arr){
         if (i === '0'){
             arr1.push(`Ученик №${i}:\n`)
@@ -74,7 +65,6 @@ function conclusion(){
     console.log(arr1)
     return alert(arr1.join(''));
 }
-
 //функция дополнения
 function addition(){
     let m = prompt('Введите кол-во учеников, которых хотите добавить', 1);
@@ -107,7 +97,6 @@ function addition(){
     arr.push.apply(arr, arr2);
     return 'Данные успешно записаны';
 }
-
 //поиск и вывод объекта по значению
 function search(){
     let arr2 = []
